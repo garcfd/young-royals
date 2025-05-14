@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+body{
+  color: black;
+  background-color: grey;
+}
+
+div{
+  position: absolute;
+  text-align: center;
+  border: 1px solid white; 
+  background-color: lightblue;
+}
+
+
+</style>
+
+
+<body>
+
+<div id="mydiv1" class="div">
+<img src="logo.jpg"></img>
+<br>Logo<br></div>
+
+<div id="mydiv2" class="div">
+<img src="wille.jpg"></img>
+<br>Wille<br></div>
+
+<div id="mydiv3" class="div">
+<img src="simon.jpg"></img>
+<br>Simon<br></div>
+
+<div id="mydiv4" class="div">
+<img src="august.jpg"></img>
+<br>August<br></div>
+
+<div id="mydiv5" class="div">
+<img src="sara.jpg"></img>
+<br>Sarah<br></div>
+
+<div id="mydiv6" class="div">
+<img src="felice.jpg"></img>
+<br>Felice<br></div>
+
+<div id="mydiv7" class="div">
+<img src="marcus.jpg"></img>
+<br>Marcus<br></div>
+
+<div id="mydiv8" class="div">
+<img src="stella.jpg"></img>
+<br>Stella<br></div>
+
+<div id="mydiv9" class="div">
+<img src="ayub.jpg"></img>
+<br>Ayub<br></div>
+
+<div id="mydiv10" class="div">
+<img src="rosh.jpg"></img>
+<br>Rosh<br></div>
+
+<div id="mydiv11" class="div">
+<img src="erik.jpg"></img>
+<br>Erik<br></div>
+
+
+
+
+<script>
+
+//Make the DIV elements draggagle:
+dragElement(document.getElementById("mydiv1"));
+dragElement(document.getElementById("mydiv2"));
+dragElement(document.getElementById("mydiv3"));
+dragElement(document.getElementById("mydiv4"));
+dragElement(document.getElementById("mydiv5"));
+dragElement(document.getElementById("mydiv6"));
+dragElement(document.getElementById("mydiv7"));
+dragElement(document.getElementById("mydiv8"));
+dragElement(document.getElementById("mydiv9"));
+dragElement(document.getElementById("mydiv10"));
+dragElement(document.getElementById("mydiv11"));
+
+
+
+
+
+
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+    self.view.sendSubviewToBack(yourView)
+  }
+
+}
+
+
+</script>
+</body>
+</html>
+
